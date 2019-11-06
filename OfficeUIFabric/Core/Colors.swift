@@ -288,7 +288,13 @@ public final class MSColors: NSObject {
     }
 
     public struct ResizingHandle {
-        public static var background: UIColor = background1
+        public static let background: UIColor = {
+            if #available(iOS 13.0, *) {
+                return UIColor.secondarySystemGroupedBackground
+            } else {
+                return .white
+            }
+        }()
         public static var mark: UIColor = foreground6b
     }
 
